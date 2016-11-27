@@ -1,0 +1,3 @@
+* chainer practice repository
+** for next research
+http://qiita.com/kenmatsu4/items/1539e50d9e59b2c327ef

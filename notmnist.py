@@ -38,6 +38,7 @@ for root in ['notMNIST_large']:
             for d in sorted(os.listdir(root))
             if os.path.isdir(os.path.join(root, d))]
     file_counter = 0
+    print('first loop')
     for directory in dirs:
         label_name = os.path.basename(directory)
         file_list = os.listdir(directory)
@@ -50,7 +51,7 @@ for root in ['notMNIST_large']:
     labels = np.ndarray(shape=(file_counter), dtype=np.int)
 
     last_num = 0
-
+    print('second loop')
     for directory in dirs:
         file_list = os.listdir(directory)
         file_count = len(file_list) - count_empty_file(directory)
@@ -59,6 +60,7 @@ for root in ['notMNIST_large']:
         labels[last_num:(last_num + file_count)] = alpha2num[label_name]
 
         skip = 0
+        print('filelist loop')
         for i, f in enumerate(file_list):
             if os.stat(os.path.join(directory, f)).st_size == 0:
                 skip += 1

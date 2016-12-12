@@ -16,7 +16,7 @@ def unpickle(fname):
     return d
 
 
-def topickle(fname, obj):
+def to_pickle(fname, obj):
     with open(fname, 'wb') as f:
         pickle.Pickler(f, protocol=2).dump(obj)
 

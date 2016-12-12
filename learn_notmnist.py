@@ -53,7 +53,7 @@ class Classifier(chainer.Chain):
         report({'loss': loss, 'accuracy': accuracy}, self)
         return loss
 
-notmnist = notmnist.unpickle('notMNIST_larget.pkl')
+notmnist = notmnist.unpickle('notMNIST_large.pkl')
 data = notmnist['data']
 target = notmnist['target']
 x_train, x_test = np.split(data, [6000])

@@ -30,7 +30,7 @@ def count_empty_file(directory):
 
 
 alpha2num = {a: i for a, i in zip('ABCDEFGHIJ', range(10))}
-num2alpha = {i: a for i, a in num2alpha.items()}
+num2alpha = {i: a for i, a in alpha2num.items()}
 
 
 for root in ['notMNIST_large']:

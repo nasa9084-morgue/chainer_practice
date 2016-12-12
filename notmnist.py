@@ -37,7 +37,7 @@ for root in ['notMNIST_large']:
     dirs = [os.path.join(root, d)
             for d in sorted(os.listdir(root))
             if os.path.isdir(os.path.join(root, d))]
-    file_count = 0
+    file_counter = 0
     for directory in dirs:
         label_name = os.path.basename(directory)
         file_list = os.listdir(directory)

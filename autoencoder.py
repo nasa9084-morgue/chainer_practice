@@ -51,7 +51,7 @@ updater = training.StandardUpdater(
     train_iter, optimizer, device=-1)
 trainer = training.Trainer(
     updater,
-    (epoch, 'epoch'),
+    (1000, 'epoch'),
     out='result'
 )
 trainer.extend(extensions.LogReport())
@@ -59,9 +59,3 @@ trainer.extend(extensions.PrintReport(['epoch', 'main/loss']))
 trainer.extend(extensions.ProgressBar())
 
 trainer.run()
-
-pred_list = []
-for (data, label) in test:
-    pred_data = model.predictor(np.array([data]).astype(np.float32)).data
-    pred_list.append((pred_data, label))
-plot(pred_list)

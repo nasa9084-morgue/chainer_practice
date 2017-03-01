@@ -8,19 +8,6 @@ from chainer.training import extensions
 from sklearn.datasets import fetch_mldata
 import numpy as np
 
-class MLP(chainer.Chain):
-    def __init__(self):
-        super().__init__(
-            l1=L.Linear(784, 100),
-            l2=L.Linear(100, 100),
-            l3=L.Linear(100, 10)
-        )
-
-    def __call__(self, x):
-        h1 = F.relu(self.l1(x))
-        h2 = F.relu(self.l2(h1))
-        return self.l3(h2)
-
 
 class CNN(chainer.Chain):
     def __init__(self, train=True):
@@ -38,17 +25,6 @@ class CNN(chainer.Chain):
         h = F.max_pooling_2d(F.relu(self.conv2(h)), 2)
         return self.l1(h)
 
-
-class Classifier(chainer.Chain):
-    def __init__(self, predictor):
-        super().__init__(predictor=predictor)
-
-    def __call__(self, x, t):
-        y = self.predictor(x, t)
-        loss = F.softmax_cross_entropy(y, t)
-        accuracy = F.accuracy(y, t)
-        report({'loss': loss, 'accuracy': accuracy}, self)
-        return loss
 
 train, test = datasets.get_mnist(ndim=3)
 
